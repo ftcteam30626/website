@@ -1,0 +1,7 @@
+# Temp screenshots from the design workflow
+temporary screenshots/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+.vscode/
