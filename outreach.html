@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outreach — Fear of Bot FTC Team 30626</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0c0e;--surface:#161618;--elevated:#1e1e22;--red:#a31c1c;--gold:#f5b84e;--gray:#8f8e8c}html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:radial-gradient(ellipse 64% 48% at 50% 50%,rgba(245,184,78,0.34) 0%,rgba(245,184,78,0.13) 40%,transparent 74%);background-attachment:fixed;background-repeat:no-repeat;color:#e0e0e0;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,12,14,0.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(163,28,28,0.25)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;height:96px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-box{width:88px;height:88px;border-radius:0;flex-shrink:0;overflow:hidden}
+.nav-logo-box img{width:100%;height:100%;object-fit:contain}
+.nav-team-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.08em;color:#fff}
+.nav-team-num{font-size:0.65rem;color:var(--gray);letter-spacing:0.12em;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:500;letter-spacing:0.06em;color:var(--gray);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+.nav-link:hover{color:#fff}
+.nav-link.active{color:#fff}
+.nav-link.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);border-radius:1px}
+
+/* BUTTONS */
+.btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:0.05em;padding:1rem 2.2rem;border-radius:8px;text-decoration:none;box-shadow:0 0 24px rgba(163,28,28,0.5),0 4px 16px rgba(0,0,0,0.5);transition:transform 0.18s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.18s}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(163,28,28,0.7),0 8px 24px rgba(0,0,0,0.6)}
+.btn-red:active{transform:translateY(0)}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:0.05em;padding:1rem 2.2rem;border-radius:8px;text-decoration:none;border:1.5px solid rgba(245,184,78,0.5);transition:transform 0.18s cubic-bezier(0.34,1.56,0.64,1),border-color 0.18s,background 0.18s}
+.btn-gold:hover{transform:translateY(-2px);border-color:var(--gold);background:rgba(245,184,78,0.08)}
+.btn-gold:active{transform:translateY(0)}
+
+/* SECTION HELPERS */
+.section-label{font-family:'Space Grotesk',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.2rem}
+.section-body{color:#9a9aaa;line-height:1.8;font-size:1rem;margin-bottom:1rem}
+.chip{display:inline-block;background:rgba(163,28,28,0.12);border:1px solid rgba(163,28,28,0.35);color:var(--gold);font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1rem}
+
+/* CARD GRID */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2rem 0}
+.card{background:var(--surface);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem;transition:transform 0.18s,border-color 0.18s,box-shadow 0.18s}
+.card:hover{transform:translateY(-4px);border-color:rgba(163,28,28,0.4);box-shadow:0 0 32px rgba(163,28,28,0.15),0 8px 24px rgba(0,0,0,0.4)}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:0.8rem}
+.card p{color:#9a9aaa;font-size:0.95rem;line-height:1.7}
+
+/* FOOTER */
+.site-footer{background:#0a0a0c;border-top:2px solid var(--red);padding:3rem 2rem}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
+.footer-brand{display:flex;align-items:center;gap:14px}
+.footer-logo-box{width:64px;height:64px;border-radius:0;overflow:hidden}
+.footer-logo-box img{width:100%;height:100%;object-fit:contain}
+.footer-team-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:0.06em}
+.footer-team-num{font-size:0.7rem;color:var(--gray);letter-spacing:0.1em;margin-top:2px}
+.footer-links{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap;justify-content:center}
+.footer-link{color:var(--gray);text-decoration:none;font-size:0.85rem;transition:color 0.18s}
+.footer-link:hover{color:var(--gold)}
+.footer-copy{font-size:0.75rem;color:#555}
+
+/* GRAIN EFFECT */
+.grain{position:absolute;inset:0;pointer-events:none;opacity:0.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:rgba(245,184,78,0.08);border:1px solid rgba(245,184,78,0.3);border-radius:12px;padding:2rem;margin:2rem 0}
+.highlight-box h3{color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem}
+
+.icon-block{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.5rem}
+.icon-num{flex-shrink:0;width:48px;height:48px;background:rgba(163,28,28,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;color:var(--gold)}
+.icon-block-content h4{color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:0.4rem}
+.icon-block-content p{color:#9a9aaa;font-size:0.95rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-box"><img src="logo.png" alt="Fear of Bot"></div>
+      <div>
+        <div class="nav-team-name">FEAR OF BOT</div>
+        <div class="nav-team-num">FTC TEAM #30626</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="events.html" class="nav-link">Season</a>
+      <a href="robot.html" class="nav-link">Robot</a>
+      <a href="team.html" class="nav-link">Team</a>
+      <a href="outreach.html" class="nav-link active">Outreach</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="sponsors.html" class="nav-link">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:96px">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(163,28,28,0.2) 0%,rgba(245,184,78,0.1) 100%)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,12,14,0.5) 0%,rgba(12,12,14,0.8) 100%)"></div>
+  <div class="grain"></div>
+  <div style="position:relative;z-index:10;text-align:center;padding:3rem 1.5rem;max-width:900px;width:100%">
+    <div class="section-label">Community Impact</div>
+    <h1 class="section-title">Outreach & Community Engagement</h1>
+    <p class="section-body">Inspiring the next generation of engineers and builders in the Urbana community through hands-on robotics experiences and FIRST program awareness.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section style="padding:6rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="highlight-box">
+      <h3>Our Outreach Mission</h3>
+      <p>Fear of Bot is committed to building awareness of FIRST Tech Challenge and inspiring students of all ages to pursue robotics and STEM education. We engage directly with our community through events, hands-on demonstrations, and mentorship opportunities.</p>
+    </div>
+
+    <!-- IMPACT METRICS -->
+    <div style="margin-top:3rem">
+      <h2 class="section-title">2025-26 Impact by Numbers</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem">
+        <div style="background:var(--surface);padding:2rem;border-radius:12px;text-align:center;border:1px solid rgba(163,28,28,0.2)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);margin-bottom:0.5rem">125</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray)">Interested Contacts Collected</div>
+        </div>
+        <div style="background:var(--surface);padding:2rem;border-radius:12px;text-align:center;border:1px solid rgba(163,28,28,0.2)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);margin-bottom:0.5rem">4</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray)">Major Outreach Events</div>
+        </div>
+        <div style="background:var(--surface);padding:2rem;border-radius:12px;text-align:center;border:1px solid rgba(163,28,28,0.2)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);margin-bottom:0.5rem">3</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray)">Community Partners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section style="padding:6rem 2rem;background:var(--surface);border-top:1px solid rgba(163,28,28,0.15);border-bottom:1px solid rgba(163,28,28,0.15)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">Where We've Been</div>
+    <h2 class="section-title">Outreach Events</h2>
+    <p class="section-body">We participated in several community events throughout the 2025-26 season, bringing hands-on robotics experiences to families and students of all ages.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem">
+      <!-- Latina Festival -->
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;overflow:hidden;transition:transform 0.18s,box-shadow 0.18s" class="card">
+        <div style="height:280px;overflow:hidden">
+          <img src="Latino festival.png" alt="Villages of Urbana Latina Festival" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:2rem">
+          <h3 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem">Villages of Urbana Latina Festival</h3>
+          <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">Connected with families at a cultural celebration, showcasing our robot and introducing FIRST to a diverse audience in the community.</p>
+        </div>
+      </div>
+
+      <!-- Fall Festival -->
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;overflow:hidden;transition:transform 0.18s,box-shadow 0.18s" class="card">
+        <div style="height:280px;overflow:hidden">
+          <img src="Fall Festival.png" alt="Urbana Fall Festival" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:2rem">
+          <h3 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem">Urbana Fall Festival</h3>
+          <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">Set up at a major community event where hundreds of visitors got hands-on experience driving our robot and learning about FTC.</p>
+        </div>
+      </div>
+
+      <!-- Church Day Camp -->
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;overflow:hidden;transition:transform 0.18s,box-shadow 0.18s" class="card">
+        <div style="height:280px;overflow:hidden">
+          <img src="International Community Church Day Camp.png" alt="International Community Church Day Camp" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:2rem">
+          <h3 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem">International Community Church Day Camp</h3>
+          <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">Hosted a robotics workshop for local students, providing an interactive introduction to FIRST Tech Challenge and engineering basics.</p>
+        </div>
+      </div>
+
+      <!-- Fall Decorated Robot -->
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;overflow:hidden;transition:transform 0.18s,box-shadow 0.18s" class="card">
+        <div style="height:280px;overflow:hidden">
+          <img src="Fall decorated robot.png" alt="Community Engagement" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:2rem">
+          <h3 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.8rem">Team Engagement</h3>
+          <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">Collaborated with other FTC teams in friendly competitions and community partnerships, strengthening the regional robotics community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section style="padding:6rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Activities</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.75rem;margin-top:2.5rem">
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1rem">Hands-On Robotics Experiences</h3>
+        <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">We provide interactive demonstrations where community members can see our robot in action, learn about subsystems, and understand the engineering behind FTC robotics.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1rem">Interactive Robot Operation</h3>
+        <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">We encourage visitors to take control of our robot, experiencing firsthand the complexity and excitement of operating a competition-ready FTC robot.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1rem">FIRST Program Awareness</h3>
+        <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">We share information about the FIRST program, FTC, and career opportunities in STEM with families and students interested in robotics and engineering.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1rem">Family Engagement</h3>
+        <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">We connect with parents and students who show interest in FIRST, providing guidance about joining FTC teams or starting FLL teams.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(163,28,28,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1rem">Community Network Building</h3>
+        <p style="color:#9a9aaa;font-size:0.95rem;line-height:1.7">Throughout our outreach efforts, we have collected contact information from approximately 125 community members interested in FIRST, creating a network for future engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section style="padding:6rem 2rem;background:var(--surface);border-top:1px solid rgba(163,28,28,0.15);border-bottom:1px solid rgba(163,28,28,0.15)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">Strategic Partners</div>
+    <h2 class="section-title">Our Community Partners</h2>
+    <p class="section-body">We work with local organizations that share our commitment to STEM education and community engagement:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Urbana STEM</h3>
+        <p>Collaborating with Urbana STEM to promote science, technology, engineering, and math education throughout our community.</p>
+      </div>
+
+      <div class="card">
+        <h3>Recycle My Battery</h3>
+        <p>Partnering to promote environmental responsibility and sustainability awareness alongside our robotics education efforts.</p>
+      </div>
+
+      <div class="card">
+        <h3>Villages of Urbana</h3>
+        <p>Working with our local municipality to bring robotics and FIRST awareness to community events and initiatives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE PLANS -->
+<section style="padding:6rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">What's Next</div>
+    <h2 class="section-title">Future Outreach Plans</h2>
+
+    <div style="display:grid;gap:2rem;grid-template-columns:1fr 1fr">
+      <div style="background:var(--elevated);border:1px solid rgba(245,184,78,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem">FLL Workshop</h3>
+        <p style="color:#9a9aaa">Host an FLL (FIRST LEGO League) workshop for the approximately 125 contacts we have collected. This will provide hands-on introduction to FIRST for younger students and their families.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(245,184,78,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem">Ongoing Engagement</h3>
+        <p style="color:#9a9aaa">Keep our interested contacts updated about FIRST program developments, events, and opportunities throughout the year.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(245,184,78,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem">Mentorship Network</h3>
+        <p style="color:#9a9aaa">Reach out to interested contacts about mentoring and coaching opportunities for new FLL and FTC teams starting in our community.</p>
+      </div>
+
+      <div style="background:var(--elevated);border:1px solid rgba(245,184,78,0.2);border-radius:12px;padding:2rem">
+        <h3 style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem">Expand Community Reach</h3>
+        <p style="color:#9a9aaa">Continue to participate in and expand our presence at community events to inspire more students to pursue robotics and STEM.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:6rem 2rem">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <h2 class="section-title">Get Involved</h2>
+    <p class="section-body">Interested in learning more about FIRST, FTC, or how Fear of Bot is making a difference in the community? Reach out to us!</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem">
+      <a href="mailto:ftcteam30626@gmail.com" class="btn-red">Contact Us</a>
+      <a href="sponsors.html" class="btn-gold">Support Our Mission</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-box"><img src="logo.png" alt="Fear of Bot"></div>
+      <div>
+        <div class="footer-team-name">FEAR OF BOT</div>
+        <div class="footer-team-num">FTC TEAM #30626</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:ftcteam30626@gmail.com" class="footer-link">ftcteam30626@gmail.com</a>
+      <a href="#" class="footer-link">Instagram</a>
+      <a href="https://www.youtube.com/@TeamFearOfBot-30626" target="_blank" class="footer-link">YouTube</a>
+      <a href="#" class="footer-link">GitHub</a>
+      <a href="https://ftcscout.org/teams/30626" target="_blank" class="footer-link">FTCScout</a>
+    </div>
+    <div class="footer-copy">© 2026 Fear of Bot · FTC Team 30626 · FIRST Tech Challenge</div>
+  </div>
+</footer>
+
+</body>
+</html>
