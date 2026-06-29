@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery — Fear of Bot FTC 30626</title>
+<link rel="icon" type="image/png" href="FOB_Logo_White_Background.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +25,25 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 .nav-link:hover{color:#fff}
 .nav-link.active{color:#fff}
 .nav-link.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);border-radius:1px}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:9px;background:transparent;border:0;cursor:pointer;border-radius:8px;transition:background 0.18s}
+.nav-toggle:hover{background:rgba(255,255,255,0.06)}
+.nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav-toggle span{display:block;width:100%;height:2px;background:#fff;border-radius:2px;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),opacity 0.2s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:767px){
+  .nav-inner{height:80px;padding:0 1.25rem}
+  .nav-logo-box{width:64px;height:64px}
+  .nav-team-name{font-size:0.95rem}
+  .nav-team-num{font-size:0.55rem}
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:80px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(12,12,14,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(163,28,28,0.25);padding:0.5rem 1.25rem 1.25rem;max-height:calc(100vh - 80px);overflow-y:auto;display:none}
+  .nav-links.open{display:flex}
+  .nav-link{font-size:1rem;padding:0.9rem 0.25rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-link:last-child{border-bottom:0}
+  .nav-link.active::after{display:none}
+}
 .site-footer{background:#0a0a0c;border-top:2px solid var(--red);padding:3rem 2rem}
 .footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
 .footer-brand{display:flex;align-items:center;gap:14px}
@@ -44,6 +64,9 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.25s;display:flex;align-items:flex-end;padding:1rem}
 .gallery-item:hover .gallery-overlay{opacity:1}
 .gallery-caption{font-family:'Space Grotesk',sans-serif;font-size:0.78rem;font-weight:600;color:#fff;letter-spacing:0.04em}
+#gallery-grid{columns:3;column-gap:1rem}
+@media (max-width:900px){#gallery-grid{columns:2}}
+@media (max-width:560px){#gallery-grid{columns:1}}
 </style>
 </head>
 <body>
@@ -58,36 +81,43 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
         <div class="nav-team-num">FTC TEAM #30626</div>
       </div>
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="events.html" class="nav-link">Season</a>
       <a href="robot.html" class="nav-link">Robot</a>
       <a href="team.html" class="nav-link">Team</a>
       <a href="outreach.html" class="nav-link">Outreach</a>
       <a href="gallery.html" class="nav-link active">Gallery</a>
-      <a href="sponsors.html" class="nav-link">Sponsors</a>
+      <a href="sponsors.html" class="nav-link">Support Us</a>
     </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- PAGE HEADER -->
 <div style="padding-top:96px">
   <div style="padding:4rem 2rem 3rem;max-width:1280px;margin:0 auto">
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem">Behind the Scenes</div>
+    <div style="display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);background:rgba(245,184,78,0.1);border:1px solid rgba(245,184,78,0.4);padding:0.35rem 0.9rem;border-radius:100px;margin-bottom:1rem">2025–26 Season</div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em">Gallery</h1>
-    <p style="color:var(--gray);font-size:0.95rem;margin-top:0.75rem">A look at Fear of Bot in the build room, on the field, and in competition.</p>
+    <p style="color:var(--gray);font-size:1rem;font-style:italic;margin-top:0.75rem">A picture is worth a thousand words</p>
   </div>
 </div>
 
 <!-- MASONRY GRID -->
 <div style="max-width:1280px;margin:0 auto;padding:0 2rem 6rem">
   <!-- Using CSS columns for masonry effect -->
-  <div id="gallery-grid" style="columns:3;column-gap:1rem">
+  <div id="gallery-grid">
 
     <!-- Team photo — tall -->
     <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:420px">
       <img src="team.JPG" alt="Fear of Bot Team">
       <div class="gallery-overlay"><div class="gallery-caption">The Team · 2025–2026 Season</div></div>
+    </div>
+
+    <!-- Outreach: Latino Festival -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:300px">
+      <img src="Latino festival.png" alt="Villages of Urbana Latino Festival">
+      <div class="gallery-overlay"><div class="gallery-caption">Villages of Urbana Latino Festival</div></div>
     </div>
 
     <!-- Robot photo — tall -->
@@ -96,21 +126,16 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
       <div class="gallery-overlay"><div class="gallery-caption">Competition Robot · DECODE</div></div>
     </div>
 
-    <!-- Placeholder: Build process -->
-    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:240px">
-      <img src="https://placehold.co/600x400/161618/8f8e8c?text=Build+Session" alt="Build Session">
-      <div class="gallery-overlay"><div class="gallery-caption">Build Session</div></div>
+    <!-- Outreach: Fall Festival -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:280px">
+      <img src="Fall Festival.png" alt="Urbana Fall Festival">
+      <div class="gallery-overlay"><div class="gallery-caption">Urbana Fall Festival</div></div>
     </div>
 
-    <!-- Logo card -->
-    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:260px;background:var(--surface);display:flex;align-items:center;justify-content:center;padding:2rem">
-      <img src="logo.png" alt="Fear of Bot Logo" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 20px rgba(163,28,28,0.4))">
-    </div>
-
-    <!-- Placeholder: DC Qualifier -->
-    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:350px">
-      <img src="https://placehold.co/600x500/161618/8f8e8c?text=DC+Qualifier+I" alt="DC Qualifier">
-      <div class="gallery-overlay"><div class="gallery-caption">Washington DC Qualifier I · Dec 2025</div></div>
+    <!-- Outreach: Church Day Camp -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:340px">
+      <img src="International Community Church Day Camp.png" alt="International Community Church Day Camp">
+      <div class="gallery-overlay"><div class="gallery-caption">International Community Church Day Camp</div></div>
     </div>
 
     <!-- Alexandria Qualifier -->
@@ -119,16 +144,22 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
       <div class="gallery-overlay"><div class="gallery-caption">Alexandria VA Qualifier I · Jan 2026</div></div>
     </div>
 
-    <!-- Placeholder: Pit setup -->
-    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:280px">
-      <img src="https://placehold.co/600x400/161618/8f8e8c?text=Pit+Setup" alt="Pit Setup">
-      <div class="gallery-overlay"><div class="gallery-caption">Competition Pit</div></div>
+    <!-- Outreach: Team Engagement -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:260px">
+      <img src="Fall decorated robot.png" alt="Community Engagement">
+      <div class="gallery-overlay"><div class="gallery-caption">Community Engagement</div></div>
     </div>
 
-    <!-- Design Award -->
-    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:220px">
-      <img src="https://placehold.co/600x350/1e1e22/f5b84e?text=Design+Award+%F0%9F%8F%86" alt="Design Award">
-      <div class="gallery-overlay"><div class="gallery-caption">Design Award · Alexandria Qualifier</div></div>
+    <!-- Outreach: Latino Festival robot demo -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:320px">
+      <img src="Latino festival robot.png" alt="Latino Festival robot demo">
+      <div class="gallery-overlay"><div class="gallery-caption">Latino Festival · Robot Demo</div></div>
+    </div>
+
+    <!-- Outreach: Fall Festival -->
+    <div class="gallery-item" style="margin-bottom:1rem;break-inside:avoid;height:280px">
+      <img src="fall festival 2.png" alt="Urbana Fall Festival">
+      <div class="gallery-overlay"><div class="gallery-caption">Urbana Fall Festival</div></div>
     </div>
 
   </div>
@@ -151,7 +182,7 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
       </div>
     </div>
     <div class="footer-links">
-      <a href="mailto:ftcteam30626@gmail.com" class="footer-link">✉ ftcteam30626@gmail.com</a>
+      <a href="mailto:contact@fearofbot.com" class="footer-link">✉ contact@fearofbot.com</a>
       <a href="#" class="footer-link">Instagram</a>
       <a href="https://www.youtube.com/@TeamFearOfBot-30626" target="_blank" class="footer-link">YouTube</a>
       <a href="#" class="footer-link">GitHub</a>
@@ -181,5 +212,8 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 })();
 </script>
 
+<script>
+(function(){var l=document.getElementById('nav-links'),b=document.getElementById('nav-toggle');if(!l||!b)return;function close(){l.classList.remove('open');b.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');}window.toggleNav=function(){var o=l.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');};l.addEventListener('click',function(e){if(e.target.closest('.nav-link'))close();});window.addEventListener('resize',function(){if(window.innerWidth>=768)close();});})();
+</script>
 </body>
 </html>
