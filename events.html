@@ -78,6 +78,13 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 .summary-item:not(:last-child){border-right:1px solid rgba(255,255,255,0.06)}
 .summary-val{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1}
 .summary-key{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray);margin-top:0.35rem}
+@media (max-width:767px){
+  .summary-bar{grid-template-columns:repeat(2,1fr)}
+  .summary-item:not(:last-child){border-right:none}
+  .summary-item{padding:1.25rem 0.75rem}
+  .summary-val{font-size:1.6rem}
+  .event-card-grid{grid-template-columns:1fr!important}
+}
 
 /* FOOTER */
 .site-footer{background:#0a0a0c;border-top:2px solid var(--red);padding:3rem 2rem}
@@ -192,7 +199,7 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 
 <!-- EVENT CARDS -->
 <div style="padding:0 2rem 3rem;max-width:1280px;margin:0 auto">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+  <div class="event-card-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
 
     <!-- CARD 1: DC QUALIFIER -->
     <div class="event-card">
