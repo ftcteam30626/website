@@ -143,6 +143,13 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 @media (min-width:768px){
   .hero-section{padding-top:96px!important}
 }
+.scroll-cue{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--gold);opacity:0.9;transition:opacity 0.2s}
+.scroll-cue:hover{opacity:1}
+.scroll-cue:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:6px}
+.scroll-cue-label{font-size:0.85rem;letter-spacing:0.28em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--gold)}
+.scroll-cue-arrow{display:flex;color:var(--gold);animation:scrollBounce 1.5s ease-in-out infinite;filter:drop-shadow(0 0 9px rgba(245,184,78,0.6))}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+@media (prefers-reduced-motion:reduce){.scroll-cue-arrow{animation:none}}
 
 /* ABOUT SECTION */
 .about-section{padding:3rem 1rem}
@@ -160,7 +167,9 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
 .grain{position:absolute;inset:0;pointer-events:none;opacity:0.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media (max-width:767px){
   body{background-attachment:scroll;background-position:center top;background-size:130% 80vh}
-  .hero-logo-bg{background-size:68%!important}
+  .hero-section{min-height:100vh;align-items:center;padding-bottom:6.5rem}
+  .hero-logo-bg{background-size:56%!important;background-position:center 30%!important}
+  .hero-content{padding-top:0.5rem!important;padding-bottom:0.5rem!important}
 }
 </style>
 </head>
@@ -195,7 +204,7 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,12,14,0.45) 0%,rgba(12,12,14,0.2) 40%,rgba(12,12,14,0.8) 85%,#0c0c0e 100%)"></div>
   <div style="position:absolute;inset:0;background:rgba(163,28,28,0.07);mix-blend-mode:multiply"></div>
   <div class="grain"></div>
-  <div style="position:relative;z-index:10;text-align:center;padding:4rem 1.5rem 6rem;max-width:900px;width:100%">
+  <div class="hero-content" style="position:relative;z-index:10;text-align:center;padding:4rem 1.5rem 6rem;max-width:900px;width:100%">
     <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(4rem,12vw,9rem);font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:0.88;margin-bottom:1.25rem">FEAR<br>OF BOT</h1>
     <p style="font-family:'Space Grotesk',sans-serif;font-size:1.05rem;color:var(--gold);font-weight:500;letter-spacing:0.1em;margin-bottom:0.6rem">FTC TEAM #30626 · FIRST TECH CHALLENGE</p>
     <p style="font-size:1rem;color:rgba(255,255,255,0.55);font-style:italic;margin-bottom:1.25rem">Built different. Wired to win.</p>
@@ -204,14 +213,16 @@ body{font-family:'Inter',sans-serif;background-color:var(--bg);background-image:
       <a href="team.html" class="btn-gold">Meet the Team</a>
     </div>
   </div>
-  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.4">
-    <span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;color:#fff">Scroll</span>
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M7 12L3 8M7 12l4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
+  <a href="#about" aria-label="Scroll to learn more" class="scroll-cue">
+    <span class="scroll-cue-label">Scroll</span>
+    <span class="scroll-cue-arrow" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M7 12L3 8M7 12l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </a>
 </section>
 
 <!-- ABOUT -->
-<section class="about-section">
+<section class="about-section" id="about">
   <div class="about-inner">
     <div>
       <div class="chip">FIRST Tech Challenge · Year 1</div>

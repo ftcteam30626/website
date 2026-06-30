@@ -1,5 +1,11 @@
 # Temp screenshots from the design workflow
 temporary screenshots/
+mobile-screenshot.png
+
+# Node / Puppeteer
+node_modules/
+package.json
+package-lock.json
 
 # OS / editor cruft
 Thumbs.db
